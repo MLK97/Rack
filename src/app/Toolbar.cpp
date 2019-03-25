@@ -49,6 +49,16 @@ struct OpenButton : TooltipIconButton {
 	}
 };
 
+    struct OpenButton : TooltipIconButton {
+        OpenButton() {
+            setSVG(SVG::load(assetGlobal("res/icons/noun_31859_cc.svg")));
+            tooltipText = "Open patch (" WINDOW_MOD_KEY_NAME "+O)";
+        }
+        void onAction(EventAction &e) override {
+            gRackWidget->loadDialog();
+        }
+    };
+    
 struct SaveButton : TooltipIconButton {
 	SaveButton() {
 		setSVG(SVG::load(assetGlobal("res/icons/noun_1343816_cc.svg")));
@@ -168,6 +178,7 @@ Toolbar::Toolbar() {
 
 	layout->addChild(new NewButton());
 	layout->addChild(new OpenButton());
+    layout->addChild(new OpenButton());
 	layout->addChild(new SaveButton());
 	layout->addChild(new SaveAsButton());
 	layout->addChild(new RevertButton());
