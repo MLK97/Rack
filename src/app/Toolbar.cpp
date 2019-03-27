@@ -49,6 +49,18 @@ struct OpenButton : TooltipIconButton {
 	}
 };
 
+
+struct OpenRecentButton : TooltipIconButton {
+	OpenRecentButton() {
+		setSVG(SVG::load(assetGlobal("res/icons/noun_1343816_cc.svg")));
+		tooltipText = "Open recen Racks";
+	}
+	void onAction(EventAction &e) override {
+		gRackWidget->loadDialog();
+	}
+};
+
+
 struct SaveButton : TooltipIconButton {
 	SaveButton() {
 		setSVG(SVG::load(assetGlobal("res/icons/noun_1343816_cc.svg")));
@@ -168,6 +180,7 @@ Toolbar::Toolbar() {
 
 	layout->addChild(new NewButton());
 	layout->addChild(new OpenButton());
+	layout->addChild(new OpenRecentButton());
 	layout->addChild(new SaveButton());
 	layout->addChild(new SaveAsButton());
 	layout->addChild(new RevertButton());
